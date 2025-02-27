@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Numbuddy</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="sign_in">Sign In</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_password">Enter password</string>
+    <string name="new_here_create_an_account">New here? Create an account!</string>
+    <string name="title_activity_loginactivity">loginactivity</string>
+    <string name="are_you_sure_you_nwant_to_log_out">Are you sure you\nwant to log out?</string>
+    <string name="logout">Logout</string>
+    <string name="cancel">Cancel</string>
+    <string name="logoutmascot">LogoutMascot</string>
+    <string name="usrname">Karol Vincent</string>
+    <string name="msg1">Good Day Karol!</string>
+    <string name="msg2">Are you ready to learn?</string>
+    <string name="msg3">You have earned 0 🌟 today!</string>
+    <string name="dailychallengemsg2">Earn 2 🌟 after completion</string>
+    <string name="dailychallengemsg1">Daily Challenge</string>
+    <string name="let_s_go">Let\'s Go</string>
+    <string name="karol_vincent">Karol Vincent</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="email">bebedorkarolvincent@gmail.com</string>
+    <string name="start">START</string>
+    <string name="lock">🔒</string>
+    <string name="karoldesc">An aspiring developer with a keen interest in learning and improving skills in software development. Enjoys problem-solving and exploring new technologies to build useful and efficient solutions.</string>
+    <string name="juliandesc">A committed and enthusiastic developer with a keen interest in coding, problem-solving, and software development. Always eager to learn and adapt to new technologies.</string>
+    <string name="loginunderlined"><u>Login</u></string>
+    <string name="signupunderlined"><u>Sign Up</u></string>
+</resources>

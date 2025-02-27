@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/whitetexture">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/signupheader"
+        android:src="@drawable/signupimg"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/signupheader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="30sp"
+        android:fontFamily="@font/poppinssemibold"
+        android:textColor="@color/textgreen"
+        android:text="Welcome!"
+        android:id="@+id/profilename"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/profilename"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="15sp"
+        android:fontFamily="@font/poppinsregular"
+        android:textColor="@color/textgreen"
+        android:text="Create a free account and start learning!"
+        android:id="@+id/emailadd"
+        />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/emailadd"
+        app:layout_constraintStart_toStartOf="@id/usernamefield"
+        android:text="@string/username"
+        android:fontFamily="@font/poppinsbold"
+        android:textColor="@color/stronggreen"
+        android:id="@+id/usernamelabel"
+
+        />
+    <EditText
+        app:layout_constraintTop_toBottomOf="@id/usernamelabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/usernamefield"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edittext_border"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppinsregular"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="15sp"
+        android:hint="@string/enter_username"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/usernamefield"
+        app:layout_constraintStart_toStartOf="@id/usernamefield"
+        android:text="@string/password"
+        android:fontFamily="@font/poppinsbold"
+        android:textColor="@color/stronggreen"
+        android:id="@+id/passwordlabel"
+
+        />
+    <EditText
+        app:layout_constraintTop_toBottomOf="@id/passwordlabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/passwordfield"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edittext_border"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppinsregular"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="15sp"
+        android:hint="@string/enter_password"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/passwordfield"
+        app:layout_constraintStart_toStartOf="@id/usernamefield"
+        android:text="Email Address"
+        android:fontFamily="@font/poppinsbold"
+        android:textColor="@color/stronggreen"
+        android:id="@+id/emaillabel"
+
+        />
+    <EditText
+        app:layout_constraintTop_toBottomOf="@id/emaillabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/emailfield"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edittext_border"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppinsregular"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="15sp"
+        android:hint="Enter valid email address"/>
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="175dp"
+        android:layout_height="35dp"
+        app:layout_constraintTop_toBottomOf="@id/emailfield"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/primarygreen"
+        app:layout_constraintBottom_toTopOf="@id/redlogout"
+        android:text="Sign Up"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppinsregular"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signUpButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:id="@+id/redlogout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/redirectlogout"
+            android:text="Already have an account?"/>
+        <TextView
+            android:id="@+id/redirectloginclickable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loginunderlined"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
