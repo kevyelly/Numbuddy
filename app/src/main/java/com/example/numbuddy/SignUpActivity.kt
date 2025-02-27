@@ -1,5 +1,6 @@
 package com.example.numbuddy
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
@@ -7,10 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+
 
 class SignUpActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +48,12 @@ class SignUpActivity : ComponentActivity() {
                 }
                 else -> {
                     Toast.makeText(this, "Successfully created account", Toast.LENGTH_SHORT).show()
+                    val username =  userNameField.text.toString()
+                    val password = passwordField.text.toString()
+                    val intent = Intent(this, SignInActivity::class.java)
+                    intent.putExtra("Username", username)
+                    intent.putExtra("Password", password)
+                    startActivity(intent)
                     finish()
                 }
             }

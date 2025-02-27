@@ -3,6 +3,7 @@ package com.example.numbuddy
 import SessionManager
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -14,6 +15,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 
 class SignInActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.signin)
@@ -26,6 +28,12 @@ class SignInActivity : ComponentActivity() {
         val passwordField = findViewById<EditText>(R.id.passwordfield)
         val signInButton = findViewById<Button>(R.id.signInButton)
         val signUpRedirect = findViewById<TextView>(R.id.signupredirectclickable)
+        if(intent != null){
+            val username = intent.getStringExtra("Username") ?: ""
+            val password = intent.getStringExtra("Password") ?: ""
+            userNameField.setText(username)
+            passwordField.setText(password)
+        }
 
         signInButton.setOnClickListener{
             if(userNameField.text.isNullOrEmpty() || passwordField.text.isNullOrEmpty()){
