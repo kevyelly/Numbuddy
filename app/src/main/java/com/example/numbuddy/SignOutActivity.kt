@@ -1,15 +1,11 @@
 package com.example.numbuddy
 
-import SessionManager
+import com.example.numbuddy.utility.SessionManager
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class SignOutActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

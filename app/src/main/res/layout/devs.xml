@@ -3,180 +3,185 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/whitetexture">
-    <ImageView
-        android:id="@+id/bckbutton"
-        android:clickable="true"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/backbutton"
-        android:focusable="true" />
-        
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Meet the\nDevelopers"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/karolcontainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="10dp"
-        android:textSize="30dp"
-        android:fontFamily="@font/poppinssemibold"
-        android:textColor="@color/stronggreen"
-        android:id="@+id/devheader" />
-
-
-     <View
-         android:id="@+id/karolcontainer"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@drawable/rounded"
-        app:layout_constraintTop_toBottomOf="@id/devheader"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="30dp" />
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/karolpp"
-        android:layout_width="100dp"
-        android:layout_height="107dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="@id/karolcontainer"
-        app:layout_constraintTop_toTopOf="@id/karolcontainer"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/karol"
-        app:shapeAppearanceOverlay="@style/RoundedPP"/>
-    <TextView
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:id="@+id/karolname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Karol Vincent Bebedor"
-        app:layout_constraintStart_toEndOf="@id/karolpp"
-        app:layout_constraintTop_toTopOf="@id/karolpp"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:fontFamily="@font/poppinssemibold"/>
-    <TextView
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="15dp"
-        android:id="@+id/karolprogram"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BSCS - 2"
-        app:layout_constraintStart_toEndOf="@id/karolpp"
-        app:layout_constraintTop_toBottomOf="@id/karolname"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:fontFamily="@font/poppinssemibold"/>
-    <TextView
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="15dp"
-        android:id="@+id/karoluniv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CIT-University"
-        app:layout_constraintStart_toEndOf="@id/karolpp"
-        app:layout_constraintTop_toBottomOf="@id/karolprogram"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:fontFamily="@font/poppinssemibold"/>
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="30dp"
-        app:layout_constraintTop_toBottomOf="@id/karolpp"
-        app:layout_constraintBottom_toBottomOf="@id/karolcontainer"
-        app:layout_constraintStart_toStartOf="@id/karolcontainer"
-        app:layout_constraintEnd_toEndOf="@id/karolcontainer"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:lineSpacingExtra="2dp"
-        android:textColor="@color/white"
-        android:text="@string/karoldesc"/>
-    <View
-        android:id="@+id/juliancontainer"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@drawable/rounded"
-        app:layout_constraintTop_toBottomOf="@id/karolcontainer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="30dp" />
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/julianpp"
-        android:layout_width="100dp"
-        android:layout_height="107dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="@id/juliancontainer"
-        app:layout_constraintTop_toTopOf="@id/juliancontainer"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/julian"
-        app:shapeAppearanceOverlay="@style/RoundedPP"/>
-    <TextView
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:id="@+id/julianname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Julian Ramil Andales"
-        app:layout_constraintStart_toEndOf="@id/julianpp"
-        app:layout_constraintTop_toTopOf="@id/julianpp"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:fontFamily="@font/poppinssemibold"/>
-    <TextView
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="15dp"
-        android:id="@+id/julianprogram"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BSCS - 2"
-        app:layout_constraintStart_toEndOf="@id/julianpp"
-        app:layout_constraintTop_toBottomOf="@id/julianname"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:fontFamily="@font/poppinssemibold"/>
-    <TextView
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="15dp"
-        android:id="@+id/julianuniv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CIT-University"
-        app:layout_constraintStart_toEndOf="@id/julianpp"
-        app:layout_constraintTop_toBottomOf="@id/julianprogram"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:fontFamily="@font/poppinssemibold"/>
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/whitetexture">
+            <ImageView
+                android:id="@+id/bckbutton"
+                android:clickable="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/backbutton"
+                android:focusable="true" />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="30dp"
-        app:layout_constraintTop_toBottomOf="@id/julianpp"
-        app:layout_constraintBottom_toBottomOf="@id/juliancontainer"
-        app:layout_constraintStart_toStartOf="@id/juliancontainer"
-        app:layout_constraintEnd_toEndOf="@id/juliancontainer"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:lineSpacingExtra="2dp"
-        android:textColor="@color/white"
-        android:text="@string/juliandesc"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="Meet the\nDevelopers"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/karolcontainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="30dp"
+                android:fontFamily="@font/poppinssemibold"
+                android:textColor="@color/stronggreen"
+                android:id="@+id/devheader" />
 
 
+            <View
+                android:id="@+id/karolcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@drawable/rounded"
+                app:layout_constraintTop_toBottomOf="@id/devheader"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="30dp" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/karolpp"
+                android:layout_width="100dp"
+                android:layout_height="107dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toStartOf="@id/karolcontainer"
+                app:layout_constraintTop_toTopOf="@id/karolcontainer"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/karol"
+                app:shapeAppearanceOverlay="@style/RoundedPP"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:id="@+id/karolname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Karol Vincent Bebedor"
+                app:layout_constraintStart_toEndOf="@id/karolpp"
+                app:layout_constraintTop_toTopOf="@id/karolpp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinssemibold"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:id="@+id/karolprogram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BSCS - 2"
+                app:layout_constraintStart_toEndOf="@id/karolpp"
+                app:layout_constraintTop_toBottomOf="@id/karolname"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinssemibold"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:id="@+id/karoluniv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CIT-University"
+                app:layout_constraintStart_toEndOf="@id/karolpp"
+                app:layout_constraintTop_toBottomOf="@id/karolprogram"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinssemibold"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="30dp"
+                app:layout_constraintTop_toBottomOf="@id/karolpp"
+                app:layout_constraintBottom_toBottomOf="@id/karolcontainer"
+                app:layout_constraintStart_toStartOf="@id/karolcontainer"
+                app:layout_constraintEnd_toEndOf="@id/karolcontainer"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:textColor="@color/white"
+                android:text="@string/karoldesc"/>
+            <View
+                android:id="@+id/juliancontainer"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@drawable/rounded"
+                app:layout_constraintTop_toBottomOf="@id/karolcontainer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="30dp" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/julianpp"
+                android:layout_width="100dp"
+                android:layout_height="107dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toStartOf="@id/juliancontainer"
+                app:layout_constraintTop_toTopOf="@id/juliancontainer"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/julian"
+                app:shapeAppearanceOverlay="@style/RoundedPP"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:id="@+id/julianname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Julian Ramil Andales"
+                app:layout_constraintStart_toEndOf="@id/julianpp"
+                app:layout_constraintTop_toTopOf="@id/julianpp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinssemibold"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:id="@+id/julianprogram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BSCS - 2"
+                app:layout_constraintStart_toEndOf="@id/julianpp"
+                app:layout_constraintTop_toBottomOf="@id/julianname"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinssemibold"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:id="@+id/julianuniv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CIT-University"
+                app:layout_constraintStart_toEndOf="@id/julianpp"
+                app:layout_constraintTop_toBottomOf="@id/julianprogram"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinssemibold"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="30dp"
+                app:layout_constraintTop_toBottomOf="@id/julianpp"
+                app:layout_constraintBottom_toBottomOf="@id/juliancontainer"
+                app:layout_constraintStart_toStartOf="@id/juliancontainer"
+                app:layout_constraintEnd_toEndOf="@id/juliancontainer"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:textColor="@color/white"
+                android:text="@string/juliandesc"/>
 
 
-
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

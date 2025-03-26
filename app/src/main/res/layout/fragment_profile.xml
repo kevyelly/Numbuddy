@@ -188,32 +188,4 @@
             android:fontFamily="@font/poppinssemibold"
             android:textColor="@color/white" />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/primarygreen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal"
-        >
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/profile"
-            android:layout_weight="1"
-            />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/home"
-            android:id="@+id/btnhome"
-            android:layout_weight="1"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/settings"
-            android:id="@+id/btnsettings"
-            android:layout_weight="1"/>
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

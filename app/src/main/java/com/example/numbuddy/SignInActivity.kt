@@ -1,17 +1,15 @@
 package com.example.numbuddy
 
-import SessionManager
+import com.example.numbuddy.utility.SessionManager
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.numbuddy.utility.UserManager
 
 
 class SignInActivity : ComponentActivity() {
@@ -43,9 +41,9 @@ class SignInActivity : ComponentActivity() {
 
             val user = UserManager.loginUser(userNameField.text.toString(), passwordField.text.toString())
             if (user != null) {
-                SessionManager.login(user) // Store the logged-in user
+                SessionManager.login(user)
                 Toast.makeText(this, "Successful Login", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, HomePageActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             } else {

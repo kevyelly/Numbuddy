@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import com.example.numbuddy.utility.UserManager
 
 
 class SignUpActivity : ComponentActivity() {

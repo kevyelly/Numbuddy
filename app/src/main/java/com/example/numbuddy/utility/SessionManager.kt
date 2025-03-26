@@ -1,4 +1,4 @@
-import com.example.numbuddy.User
+package com.example.numbuddy.utility
 
 object SessionManager {
     var loggedInUser: User? = null

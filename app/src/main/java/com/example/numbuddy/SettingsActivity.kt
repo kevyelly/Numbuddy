@@ -1,6 +1,6 @@
 package com.example.numbuddy
 
-import SessionManager
+import com.example.numbuddy.utility.SessionManager
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.appcompat.app.AppCompatActivity
+import com.example.numbuddy.utility.UserManager
 
 class SettingsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +33,7 @@ class SettingsActivity : ComponentActivity() {
         }
         val bkbutton =  findViewById<ImageView>(R.id.bckbutton)
         bkbutton.setOnClickListener{
-            val intent = Intent(this, HomePageActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }

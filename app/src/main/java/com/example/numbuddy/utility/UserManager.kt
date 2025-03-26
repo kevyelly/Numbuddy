@@ -1,4 +1,4 @@
-package com.example.numbuddy
+package com.example.numbuddy.utility
 
 data class User(var username: String, var password: String, var email: String)
 
@@ -21,7 +21,7 @@ object UserManager {
     fun loginUser(username: String, password: String): User? {
         return users.find { it.username == username && it.password == password }
     }
-    fun updateUser(currentUser:User, username: String, email: String, password: String) {
+    fun updateUser(currentUser: User, username: String, email: String, password: String) {
         currentUser.username = username
         currentUser.email = email
         currentUser.password = password
