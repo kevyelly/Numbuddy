@@ -1,9 +1,12 @@
 package com.example.numbuddy
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -24,20 +27,25 @@ class SignUpActivity : ComponentActivity() {
         val userNameField = findViewById<EditText>(R.id.usernamefield)
         val passwordField = findViewById<EditText>(R.id.passwordfield)
         val emailField = findViewById<EditText>(R.id.emailfield)
+        val confirmPassword = findViewById<EditText>(R.id.confirmpassword)
 
         signinredirect.setOnClickListener{
             finish()
         }
         signUpButton.setOnClickListener {
-            if(userNameField.text.isNullOrEmpty() || passwordField.text.isNullOrEmpty() || emailField.text.isNullOrEmpty()){
+            if(userNameField.text.isNullOrEmpty() || passwordField.text.isNullOrEmpty() || emailField.text.isNullOrEmpty() || confirmPassword.text.isNullOrEmpty()){
                 Toast.makeText(this, "Please fill up all the fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if(!Patterns.EMAIL_ADDRESS.matcher(emailField.text).matches()){
+            if(!Patterns.EMAIL_ADDRESS.matcher(emailField.text.trim()).matches()){
                 Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val res = UserManager.addUser(userNameField.text.toString(), passwordField.text.toString(), emailField.text.toString())
+            if(passwordField.text.toString().trim() != confirmPassword.text.toString().trim()){
+                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val res = UserManager.addUser(userNameField.text.toString().trim(), passwordField.text.toString().trim(), emailField.text.toString().trim())
             when (res) {
                 0 -> {
                     Toast.makeText(this, "Username is already taken", Toast.LENGTH_SHORT).show()
@@ -49,8 +57,8 @@ class SignUpActivity : ComponentActivity() {
                 }
                 else -> {
                     Toast.makeText(this, "Successfully created account", Toast.LENGTH_SHORT).show()
-                    val username =  userNameField.text.toString()
-                    val password = passwordField.text.toString()
+                    val username =  userNameField.text.toString().trim()
+                    val password = passwordField.text.toString().trim();
                     val intent = Intent(this, SignInActivity::class.java)
                     intent.putExtra("Username", username)
                     intent.putExtra("Password", password)
@@ -59,6 +67,10 @@ class SignUpActivity : ComponentActivity() {
                 }
             }
 
+
+
         }
+
+
     }
 }

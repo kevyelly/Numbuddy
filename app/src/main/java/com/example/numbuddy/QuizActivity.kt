@@ -1,11 +1,15 @@
 package com.example.numbuddy
 
+import android.content.res.Resources
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.numbuddy.utility.QuestionGenerator
 
@@ -20,10 +24,13 @@ class QuizActivity : ComponentActivity() {
     private var currentQuestionIndex = 0
     private var score = 0
     private val handler = Handler(Looper.getMainLooper())
+    private lateinit var indicator: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.quizitem)
+
+        indicator = findViewById<TextView>(R.id.indexindicator)
 
         questionTextView = findViewById(R.id.question)
         choice1 = findViewById(R.id.choice1)
@@ -45,14 +52,17 @@ class QuizActivity : ComponentActivity() {
         if (currentQuestionIndex < 10) {
             val currentQuestion = questions[currentQuestionIndex]
 
-            // Update UI
+
             questionTextView.text = currentQuestion.question
             choice1.text = currentQuestion.choice1.toString()
             choice2.text = currentQuestion.choice2.toString()
             choice3.text = currentQuestion.choice3.toString()
             choice4.text = currentQuestion.choice4.toString()
+            val adjustedIndex = currentQuestionIndex+1
+            val s = "Question $adjustedIndex/10";
+            indicator.text = s;
 
-            // Reset button colors and enable them
+
 
             val choices = listOf(choice1, choice2, choice3, choice4)
             var ctr = 1;
@@ -66,8 +76,11 @@ class QuizActivity : ComponentActivity() {
                 ctr++;
             }
         } else {
-            Toast.makeText(this, "Quiz Finished! Score: $score / ${questions.size}", Toast.LENGTH_LONG).show()
-            finish()
+            showQuizResultDialog(score)
+            handler.postDelayed({
+                Toast.makeText(this, "Quiz Finished! Score: $score / ${questions.size}", Toast.LENGTH_LONG).show()
+                finish()
+            }, 5000)
         }
     }
 
@@ -80,9 +93,11 @@ class QuizActivity : ComponentActivity() {
         if (selectedIndex == currentQuestion.correct) {
             score++
             selectedButton.setBackgroundColor(Color.GREEN)
+            showQuizResultDialog(-1)
         } else {
             selectedButton.setBackgroundColor(Color.RED)
             choices[currentQuestion.correct - 1].setBackgroundColor(Color.GREEN)
+            showQuizResultDialog(-2)
         }
 
         handler.postDelayed({
@@ -90,4 +105,49 @@ class QuizActivity : ComponentActivity() {
             loadQuestion()
         }, 1000)
     }
+    private fun showQuizResultDialog(t: Int) {
+        val dialogView = layoutInflater.inflate(R.layout.quizpopup, null)
+        if(t == -1)dialogView.setBackgroundResource(R.drawable.correctbg)
+        else if (t == -2) dialogView.setBackgroundResource(R.drawable.wrongbg)
+        else {
+            dialogView.setBackgroundColor(Color.WHITE)
+            val text = dialogView.findViewById<TextView>(R.id.resulttext)
+            val message = "Well done! You achieved $t/10"
+            text.text = message
+            text.bringToFront()
+        }
+
+
+
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(false)
+            .create()
+
+
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
+        val widthInDp = 300
+        val heightInDp = 300
+
+
+        val scale = Resources.getSystem().displayMetrics.density
+        val widthInPx = (widthInDp * scale).toInt()
+        val heightInPx = (heightInDp * scale).toInt()
+
+        var delay: Long = 0
+        if(t == -1 || t == -2){
+            delay = 1500
+        }else{
+            delay = 5000
+        }
+
+        dialog.window?.setLayout(widthInPx, heightInPx)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (dialog.isShowing) dialog.dismiss()
+        }, delay)
+    }
+
 }
