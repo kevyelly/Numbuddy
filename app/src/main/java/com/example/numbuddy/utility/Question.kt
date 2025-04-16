@@ -1,3 +1,4 @@
+package com.example.numbuddy.utility
 data class Question(
     val question: String,
     val choice1: Int,
