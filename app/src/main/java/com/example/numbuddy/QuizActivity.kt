@@ -42,7 +42,7 @@ class QuizActivity : ComponentActivity() {
         // Determine which question set to use based on the button pressed in HomePageFragment
         val questionType = intent.getIntExtra("QUESTION_TYPE", 1)
 
-        // Generate the appropriate set of questions based on the question type
+        // Generate a questions based on the button pressed
         questions = when (questionType) {
             2 -> QuestionGenerator.generateBasicAdditionQuestions(10)
             3 -> QuestionGenerator.generateBasicSubtractionQuestions(10)
@@ -56,6 +56,12 @@ class QuizActivity : ComponentActivity() {
                 val divisionQuestions = QuestionGenerator.generateBasicNumberDecompositionQuestions(5)
                 val multiplicationQuestions = QuestionGenerator.generateNumberBuilderQuestions(5)
                 val combinedQuestions = divisionQuestions + multiplicationQuestions
+                combinedQuestions.shuffled()
+            }
+            6 ->{
+                val additionprobs = QuestionGenerator.generateAdvanceAdditionQuestions(5)
+                val subtractionprobs = QuestionGenerator.generateAdvanceSubtractionQuestions(5)
+                val combinedQuestions = additionprobs + subtractionprobs
                 combinedQuestions.shuffled()
             }
             else -> QuestionGenerator.generateLessOrGreaterQuestions(10)

@@ -128,7 +128,7 @@ object QuestionGenerator {
 
     fun generateLessOrGreaterQuestions(count: Int): List<Question> {
         val questions = mutableListOf<Question>()
-        val used = mutableSetOf<Pair<Boolean, Int>>() // (isLessThan, limit)
+        val used = mutableSetOf<Pair<Boolean, Int>>() //
 
         while (questions.size < count) {
             val isLessThan = Random.nextBoolean()
@@ -178,7 +178,7 @@ object QuestionGenerator {
             val tens = (number / 10) % 10
             val hundreds = (number / 100)
 
-            val decompositionType = Random.nextInt(1, 4) // 1 = ones, 2 = tens, 3 = hundreds
+            val decompositionType = Random.nextInt(1, 4)
             val correctAnswer: Int
             val questionText: String
 
@@ -236,7 +236,7 @@ object QuestionGenerator {
                 "$ones in ones"
             )
             labels.shuffle()
-            val questionText = labels.joinToString("\n") // <-- changed here
+            val questionText = labels.joinToString("\n")
 
             val options = hashSetOf(correctAnswer)
 
@@ -255,6 +255,90 @@ object QuestionGenerator {
             questions.add(
                 Question(
                     question = questionText,
+                    choice1 = optionsList[0],
+                    choice2 = optionsList[1],
+                    choice3 = optionsList[2],
+                    choice4 = optionsList[3],
+                    correct = correctIndex
+                )
+            )
+        }
+
+        return questions
+    }
+    fun generateAdvanceAdditionQuestions(count: Int): List<Question> {
+        val questions = mutableListOf<Question>()
+        val used = mutableSetOf<Pair<Int, Int>>()
+
+        while (questions.size < count) {
+            val num1 = Random.nextInt(50, 800)
+            val num2 = Random.nextInt(50, 800)
+            val correctAnswer = num1 + num2
+
+            if (correctAnswer !in 100..999) continue
+
+            val key = if (num1 < num2) Pair(num1, num2) else Pair(num2, num1)
+            if (used.contains(key)) continue
+            used.add(key)
+
+            val options = mutableSetOf(correctAnswer)
+
+            // Generate incorrrect answers
+            while (options.size < 4) {
+                val offset = Random.nextInt(-15, 16)
+                val wrongAnswer = correctAnswer + offset
+                if (wrongAnswer != correctAnswer && wrongAnswer in 100..999) {
+                    options.add(wrongAnswer)
+                }
+            }
+
+            val optionsList = options.shuffled()
+            val correctIndex = optionsList.indexOf(correctAnswer) + 1
+
+            questions.add(
+                Question(
+                    question = "$num1 + $num2 = ?",
+                    choice1 = optionsList[0],
+                    choice2 = optionsList[1],
+                    choice3 = optionsList[2],
+                    choice4 = optionsList[3],
+                    correct = correctIndex
+                )
+            )
+        }
+
+        return questions
+    }
+    fun generateAdvanceSubtractionQuestions(count: Int): List<Question> {
+        val questions = mutableListOf<Question>()
+        val used = mutableSetOf<Pair<Int, Int>>()
+
+        while (questions.size < count) {
+            val num1 = Random.nextInt(200, 1000)
+            val num2 = Random.nextInt(50, num1)
+            val correctAnswer = num1 - num2
+
+            if (correctAnswer !in 100..999) continue
+
+            val key = Pair(num1, num2)
+            if (used.contains(key)) continue
+            used.add(key)
+
+            val options = mutableSetOf(correctAnswer)
+            while (options.size < 4) {
+                val offset = Random.nextInt(-15, 16)
+                val wrong = correctAnswer + offset
+                if (wrong != correctAnswer && wrong in 100..999) {
+                    options.add(wrong)
+                }
+            }
+
+            val optionsList = options.shuffled()
+            val correctIndex = optionsList.indexOf(correctAnswer) + 1
+
+            questions.add(
+                Question(
+                    question = "$num1 - $num2 = ?",
                     choice1 = optionsList[0],
                     choice2 = optionsList[1],
                     choice3 = optionsList[2],

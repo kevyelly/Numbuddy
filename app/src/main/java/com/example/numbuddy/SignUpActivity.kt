@@ -41,6 +41,14 @@ class SignUpActivity : ComponentActivity() {
                 Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            val password = passwordField.text.toString()
+            val hasNumber = password.contains(Regex("\\d"))
+            val hasSpecial = password.contains(Regex("[!@#\$%^&*()_+\\-\\[\\]{};':\"\\\\|,.<>/?]"))
+
+            if (!hasNumber || !hasSpecial) {
+                Toast.makeText(this, "Password must contain at least one number and one special character", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
             if(passwordField.text.toString().trim() != confirmPassword.text.toString().trim()){
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
