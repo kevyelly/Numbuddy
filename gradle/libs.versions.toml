@@ -13,6 +13,7 @@ constraintlayout = "2.2.0"
 appcompat = "1.6.1"
 material = "1.10.0"
 activity = "1.8.0"
+firebaseCrashlyticsBuildtools = "3.0.3"
 
 [libraries]
 circleimageview = { module = "de.hdodenhof:circleimageview", version = "3.1.0" }
@@ -35,6 +36,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -74,29 +74,34 @@ object UserProgressManager {
         Log.i("UserProgressManager", "Cleared all progress data.")
     }
     fun migrateUserProgress(context: Context, oldUsername: String, newUsername: String) {
+        val tag = "UserProgressManager"
 
-        if (oldUsername.isBlank() || newUsername.isBlank() || oldUsername.equals(newUsername, ignoreCase = true)) {
-            Log.w("UserProgressManager", "Migration skipped: invalid or identical usernames.")
+        if (oldUsername.isBlank() || newUsername.isBlank()) {
+            Log.w(tag, "Migration skipped: one or both usernames are blank.")
+            return
+        }
+        if (oldUsername.equals(newUsername, ignoreCase = true)) {
+            Log.w(tag, "Migration skipped: usernames are identical.")
             return
         }
 
-        Log.i("UserProgressManager", "Migrating progress from '$oldUsername' to '$newUsername'")
+        Log.i(tag, "Migrating progress from '$oldUsername' to '$newUsername'")
 
+        val level = getUserStageLevel(context, oldUsername)
+        val quizzesCompleted = getQuizzesCompleted(context, oldUsername)
+        val stars = getUserStars(context, oldUsername)
 
-        val oldLevel = getUserStageLevel(context, oldUsername)
-        val oldQuizzesCompleted = getQuizzesCompleted(context, oldUsername)
-        val oldStars = getUserStars(context, oldUsername)
+        saveUserStageLevel(context, newUsername, level)
+        saveQuizzesCompleted(context, newUsername, quizzesCompleted)
+        saveUserStars(context, newUsername, stars)
+        with(getPreferences(context).edit()) {
+            remove("$KEY_STAGE_LEVEL_PREFIX$oldUsername")
+            remove("$KEY_QUIZZES_COMPLETED_PREFIX$oldUsername")
+            remove("$KEY_STARS_PREFIX$oldUsername")
+            apply()
+        }
 
-        saveUserStageLevel(context, newUsername, oldLevel)
-        saveQuizzesCompleted(context, newUsername, oldQuizzesCompleted)
-        saveUserStars(context, newUsername, oldStars)
-
-        val editor = getPreferences(context).edit()
-        editor.remove(KEY_STAGE_LEVEL_PREFIX + oldUsername)
-        editor.remove(KEY_QUIZZES_COMPLETED_PREFIX + oldUsername)
-        editor.remove(KEY_STARS_PREFIX + oldUsername)
-        editor.apply()
-
-        Log.i("UserProgressManager", "Migration complete for '$newUsername'")
+        Log.i(tag, "Migration complete for '$newUsername'")
     }
+
 }

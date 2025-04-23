@@ -3,8 +3,8 @@ package com.example.numbuddy.utility
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
 import com.google.gson.Gson // Import Gson
-import com.google.gson.reflect.TypeToken // Import TypeToken
 
 
 data class User(
@@ -30,7 +30,7 @@ object UserManager {
         return if (json != null) {
             try {
 
-                val type = object : TypeToken<MutableList<User>>() {}.type
+                val type = object : com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken<MutableList<User>>() {}.type
                 gson.fromJson(json, type) ?: mutableListOf()
             } catch (e: Exception) {
                 Log.e("UserManager", "Error parsing user list JSON", e)
