@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.numbuddy.fragments.HomePageFragment
 import com.example.numbuddy.fragments.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         }
         btnSettings.setOnClickListener{
             startActivity(Intent(this, SettingsActivity::class.java))
-            finish()
         }
         btnHome.setOnClickListener{
             loadFragment(HomePageFragment())

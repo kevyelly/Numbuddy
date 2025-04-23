@@ -5,14 +5,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button // Changed import assuming signUpButton is a Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.numbuddy.utility.UserManager
-
+// --- ADD THIS IMPORT ---
+import com.example.numbuddy.utility.UserProgressManager
 
 class SignUpActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,7 @@ class SignUpActivity : ComponentActivity() {
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
 
         val signinredirect = findViewById<TextView>(R.id.redirectloginclickable)
-        val signUpButton = findViewById<TextView>(R.id.signUpButton)
+        val signUpButton = findViewById<Button>(R.id.signUpButton)
         val userNameField = findViewById<EditText>(R.id.usernamefield)
         val passwordField = findViewById<EditText>(R.id.passwordfield)
         val emailField = findViewById<EditText>(R.id.emailfield)
@@ -32,53 +33,64 @@ class SignUpActivity : ComponentActivity() {
         signinredirect.setOnClickListener{
             finish()
         }
+
         signUpButton.setOnClickListener {
-            if(userNameField.text.isNullOrEmpty() || passwordField.text.isNullOrEmpty() || emailField.text.isNullOrEmpty() || confirmPassword.text.isNullOrEmpty()){
+            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
+
+            val usernameInput = userNameField.text.toString().trim()
+            val passwordInput = passwordField.text.toString().trim()
+            val emailInput = emailField.text.toString().trim()
+            val confirmPasswordInput = confirmPassword.text.toString().trim()
+
+            if(usernameInput.isEmpty() || passwordInput.isEmpty() || emailInput.isEmpty() || confirmPasswordInput.isEmpty()){
                 Toast.makeText(this, "Please fill up all the fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if(!Patterns.EMAIL_ADDRESS.matcher(emailField.text.trim()).matches()){
-                Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show()
+            if(!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()){
+                Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val password = passwordField.text.toString()
-            val hasNumber = password.contains(Regex("\\d"))
-            val hasSpecial = password.contains(Regex("[!@#\$%^&*()_+\\-\\[\\]{};':\"\\\\|,.<>/?]"))
-
+            if(passwordInput != confirmPasswordInput){
+                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val hasNumber = passwordInput.contains(Regex("\\d"))
+            val hasSpecial = passwordInput.contains(Regex("[!@#\$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?~`]"))
             if (!hasNumber || !hasSpecial) {
                 Toast.makeText(this, "Password must contain at least one number and one special character", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            if(passwordField.text.toString().trim() != confirmPassword.text.toString().trim()){
-                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+            if (passwordInput.length < 6) {
+                Toast.makeText(this, "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val res = UserManager.addUser(userNameField.text.toString().trim(), passwordField.text.toString().trim(), emailField.text.toString().trim())
+            val res = UserManager.addUser(this,usernameInput, passwordInput, emailInput)
+
             when (res) {
                 0 -> {
                     Toast.makeText(this, "Username is already taken", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
                 }
                 -1 -> {
                     Toast.makeText(this, "Email is already used", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
                 }
-                else -> {
-                    Toast.makeText(this, "Successfully created account", Toast.LENGTH_SHORT).show()
-                    val username =  userNameField.text.toString().trim()
-                    val password = passwordField.text.toString().trim();
+                1 -> {
+                    Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
+
+                    UserProgressManager.saveUserStageLevel(this, usernameInput, 1)
+
                     val intent = Intent(this, SignInActivity::class.java)
-                    intent.putExtra("Username", username)
-                    intent.putExtra("Password", password)
+                    intent.putExtra("Username", usernameInput)
+                    intent.putExtra("Password", passwordInput)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()
                 }
+                else -> {
+
+                    Toast.makeText(this, "An unknown error occurred during sign up.", Toast.LENGTH_SHORT).show()
+                }
             }
-
-
-
         }
-
-
     }
 }

@@ -173,7 +173,6 @@ object QuestionGenerator {
         repeat(count) {
             val number = Random.nextInt(10, 1000)
 
-            // Get digits directly via arithmetic
             val ones = number % 10
             val tens = (number / 10) % 10
             val hundreds = (number / 100)
@@ -223,31 +222,38 @@ object QuestionGenerator {
 
     fun generateNumberBuilderQuestions(count: Int): List<Question> {
         val questions = mutableListOf<Question>()
+        val usedCorrectAnswers = mutableSetOf<Int>()
 
-        repeat(count) {
+        while (questions.size < count) {
+
             val hundreds = Random.nextInt(1, 10)
             val tens = Random.nextInt(0, 10)
             val ones = Random.nextInt(0, 10)
             val correctAnswer = hundreds * 100 + tens * 10 + ones
 
+            if (usedCorrectAnswers.contains(correctAnswer)) continue
+            usedCorrectAnswers.add(correctAnswer)
+
+            // Create the question text
             val labels = arrayOf(
-                "$hundreds in hundreds",
-                "$tens in tens",
-                "$ones in ones"
+                "$hundreds hundreds",
+                "$tens tens",
+                "$ones ones"
             )
             labels.shuffle()
             val questionText = labels.joinToString("\n")
 
             val options = hashSetOf(correctAnswer)
 
-            // Generate wrong answers with digit mixing
             while (options.size < 4) {
-                val d1 = listOf(hundreds, tens, ones).shuffled()
-                val wrong = d1[0] * 100 + d1[1] * 10 + d1[2]
-                if (wrong != correctAnswer && wrong in 10..999) {
-                    options.add(wrong)
+
+                val wrongAnswer = Random.nextInt(100, 1000)
+
+                if (wrongAnswer != correctAnswer) {
+                    options.add(wrongAnswer)
                 }
             }
+
 
             val optionsList = options.toList().shuffled()
             val correctIndex = optionsList.indexOf(correctAnswer) + 1

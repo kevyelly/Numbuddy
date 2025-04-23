@@ -39,7 +39,7 @@ class SignInActivity : ComponentActivity() {
                 return@setOnClickListener
             }
 
-            val user = UserManager.loginUser(userNameField.text.toString(), passwordField.text.toString())
+            val user = UserManager.loginUser(this, userNameField.text.toString(), passwordField.text.toString()) // Correct
             if (user != null) {
                 SessionManager.login(user)
                 Toast.makeText(this, "Successful Login", Toast.LENGTH_SHORT).show()

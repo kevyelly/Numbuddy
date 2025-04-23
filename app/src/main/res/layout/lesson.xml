@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginTop="40dp"
+    android:layout_marginBottom="40dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="@color/white" app:cardPreventCornerOverlap="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"> <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:src="@drawable/greentexture"
+        android:scaleType="centerCrop"
+        android:contentDescription="Background Image" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <ScrollView
+            android:id="@+id/lesson_content_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="0dp">
+
+                <TextView
+                    android:id="@+id/lesson_title_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LESSON TITLE"
+                    android:textSize="24sp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppinsextrabold"
+                    android:shadowColor="@color/black"
+                    android:shadowRadius="8"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:id="@+id/lesson_text_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:background="@drawable/roundedwhite"
+                    android:gravity="center"
+                    android:padding="22dp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="SOME TEXT HERE"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16dp"
+                    android:layout_marginBottom="16dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:text="Let's Watch and Learn!"
+                    android:fontFamily="@font/poppinssemibold"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/lesson_youtube_card_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@color/bgteal" android:layout_marginEnd="8dp"
+                        android:clickable="true" android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"> <ImageView
+                        android:id="@+id/lesson_youtube_image_1" android:layout_width="match_parent"
+                        android:layout_height="100dp" android:scaleType="centerCrop" android:contentDescription="Lesson Video Thumbnail 1"
+                        tools:srcCompat="@drawable/settingimg" /> </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/lesson_youtube_card_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@color/bgteal" android:layout_marginStart="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground">
+
+                        <ImageView
+                            android:id="@+id/lesson_youtube_image_2" android:layout_width="match_parent"
+                            android:layout_height="100dp" android:scaleType="centerCrop"
+                            android:contentDescription="Lesson Video Thumbnail 2"
+                            tools:srcCompat="@drawable/settingimg" /> </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+            <Button
+                android:id="@+id/lesson_start_quiz_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" android:backgroundTint="@color/textgreen"
+                android:fontFamily="@font/poppinssemibold"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="🐰START QUIZ🐰"
+                android:textColor="@color/white"
+                app:cornerRadius="25dp" />
+
+        </LinearLayout> </FrameLayout> </androidx.cardview.widget.CardView>

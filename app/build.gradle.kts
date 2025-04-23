@@ -45,6 +45,8 @@ android {
 }
 
 dependencies {
+    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation ("com.airbnb.android:lottie:6.4.1")
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation ("com.google.android.material:material:1.9.0")
     implementation (libs.circleimageview)

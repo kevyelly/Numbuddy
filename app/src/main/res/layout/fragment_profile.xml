@@ -10,8 +10,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/koalaprofile"
+        android:layout_marginTop="90dp"
+        android:src="@drawable/pp"
         android:scaleType="fitCenter"
         android:id="@+id/koalaprofile"/>
 
@@ -66,107 +66,47 @@
         android:textColor="@color/white"
         android:textSize="15sp"/>
 
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/medal"
-        app:layout_constraintTop_toBottomOf="@id/badgetitle"
-        app:layout_constraintEnd_toStartOf="@id/badgetitle"
-        android:translationX="35dp"
-        android:orientation="vertical"
-        android:id="@+id/medal"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/medal"
-            app:layout_constraintEnd_toStartOf="@id/badgetitle"
-            app:layout_constraintTop_toBottomOf="@id/badgetitle" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/medal"
-            app:layout_constraintStart_toStartOf="@id/medal"
-            app:layout_constraintEnd_toEndOf="@id/medal"
-            android:text="Level"
-            android:fontFamily="@font/poppinssemibold"
-            android:textColor="@color/white"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/medal"
-            app:layout_constraintStart_toStartOf="@id/medal"
-            app:layout_constraintEnd_toEndOf="@id/medal"
-            android:text="0"
-            android:fontFamily="@font/poppinssemibold"
-            android:textColor="@color/white"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:translationY="18dp"
-        android:translationX="-35dp"
         android:id="@+id/stars"
         app:layout_constraintTop_toBottomOf="@id/badgetitle"
-        app:layout_constraintStart_toEndOf="@id/badgetitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical"
         android:gravity="center">
+
         <ImageView
-            android:layout_width="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
             android:scaleType="centerCrop"
-            android:layout_height="60dp"
             android:src="@drawable/stars" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stars"
+            android:layout_width="42dp"
+            android:layout_height="18dp"
             android:fontFamily="@font/poppinssemibold"
-            android:textColor="@color/white"/>
+            android:text="Stars"
+            android:textColor="@color/white" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
+            android:id="@+id/stars_value_text"
             android:fontFamily="@font/poppinssemibold"
             android:textColor="@color/white"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:translationX="-35dp"
-        android:id="@+id/streak"
-        app:layout_constraintTop_toBottomOf="@id/medal"
-        app:layout_constraintStart_toEndOf="@id/medal"
-        android:orientation="vertical"
-        android:gravity="center">
-        <ImageView
-            android:layout_width="60dp"
-            android:scaleType="centerCrop"
-            android:layout_height="60dp"
-            android:src="@drawable/streak" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Streak"
-            android:fontFamily="@font/poppinssemibold"
-            android:textColor="@color/white"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0 days"
-            android:fontFamily="@font/poppinssemibold"
-            android:textColor="@color/white"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:translationX="-45dp"
-        android:translationY="18dp"
+
         android:id="@+id/Stages"
         app:layout_constraintTop_toBottomOf="@id/stars"
         app:layout_constraintStart_toStartOf="@id/stars"
+        app:layout_constraintEnd_toEndOf="@id/stars"
         android:orientation="vertical"
         android:gravity="center"
         >
@@ -178,13 +118,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stages"
+            android:text="Stages Completed"
             android:fontFamily="@font/poppinssemibold"
             android:textColor="@color/white"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0 completed"
+            android:text="0"
+            android:id="@+id/stages_value_text"
             android:fontFamily="@font/poppinssemibold"
             android:textColor="@color/white" />
     </LinearLayout>
