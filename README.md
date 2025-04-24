@@ -1,4 +1,4 @@
-# Numbuddy  BUDDY
+# Numbuddy 
 
 ## Overview
 
